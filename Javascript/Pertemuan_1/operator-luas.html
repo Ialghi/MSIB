@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung Luas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+
+<body class="bg-light">
+    <h1 class="text-center my-4">Menghitung Luas</h1>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <!-- menghitung luas persegi panjang -->
+            <div class="col-lg-4 mb-3">
+                <div class="card">
+                    <div class="px-4 my-4">
+                        <p><b><i class="bi bi-aspect-ratio"></i>&nbsp; Luas Persegi Panjang</b></p>
+                        <form>
+                            <input type="number" class="form-control mb-2" id="panjang" placeholder="Panjang (cm)">
+                            <input type="number" class="form-control mb-2" id="lebar" placeholder="Lebar (cm)">
+                            <button class="btn btn-primary w-100" onclick="menghitungLuasPersegiPanjang()" type="button">Submit</button>
+                            <hr>
+                            <div class="card bg-light p-2" style="height:43px;"><span id="hasilLuasPersegiPanjang">0 cm²</span></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- menghitung luas bujur sangkar -->
+            <div class="col-lg-4 mb-3">
+                <div class="card h-100">
+                    <div class="px-4 my-4">
+                        <p><b><i class="bi bi-square"></i>&nbsp; Luas Bujur Sangkar</b></p>
+                        <form>
+                            <input type="number" class="form-control mb-2" id="sisi" placeholder="Sisi (cm)">
+                            <button class="btn btn-primary w-100" onclick="menghitungLuasBujurSangkar()" type="button">Submit</button>
+                            <hr>
+                            <div class="card bg-light p-2" style="height:43px;"><span id="hasilLuasBujurSangkar">0 cm²</span></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- menghitung luas segitiga -->
+            <div class="col-lg-4 mb-3">
+                <div class="card">
+                    <div class="px-4 my-4">
+                        <p><b><i class="bi bi-caret-up"></i>&nbsp; Luas Segitiga</b></p>
+                        <form>
+                            <input type="number" class="form-control mb-2" id="alas" placeholder="Alas (cm)">
+                            <input type="number" class="form-control mb-2" id="tinggi" placeholder="Tinggi (cm)">
+                            <button class="btn btn-primary w-100" onclick="menghitungLuasSegitiga()" type="button">Submit</button>
+                            <hr>
+                            <div class="card bg-light p-2" style="height:43px;"><span id="hasilLuasSegitiga">0 cm²</span></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // menghitung luas persegi panjang
+    function menghitungLuasPersegiPanjang() { //membuat fungtion untuk emnghitung luas persegi panjang saat button di klik
+        let panjang = Number(document.getElementById('panjang').value); //mengambil ukuran panjang dan mengubahnya ke number
+        let lebar = Number(document.getElementById('lebar').value); //mengambil ukuran lebar dan mengubahnya ke number
+        let luas = panjang * lebar; //rumus menghitung luas persegi panjang (L = panjang x lebar)
+        document.getElementById('hasilLuasPersegiPanjang').innerText = luas + ' cm²'; //menuliskan hasil kedalam span dengan id hasilLuasPersegiPanjang
+    }
+    // jadi saat button di klik maka value dari input form akan diambil sesuai dengan id nya lalu diubah ke number agar tidak error
+    // lalu dihitung luasnya dengan rumus yang ada dan hasilnya akan dimasukan kedalam span
+
+    // menghitung luas bujur sangkar
+    function menghitungLuasBujurSangkar() { //membuat fungtion untuk menghitung luas bujur sangkar saat button di klik
+        let sisi = Number(document.getElementById('sisi').value); //mengambil ukuran sisi dari input id "sisi" lalu mengubahnya ke number
+        let luas = sisi * sisi; //rumus menghitung luas bujur sangkar (L = sisi x sisi)
+        document.getElementById('hasilLuasBujurSangkar').innerText = luas + ' cm²'; //menuliskan hasil kedalam span dengan id hasilLuasBujurSangkar
+    }
+
+    // menghitung luas segitiga
+    function menghitungLuasSegitiga() { //membuat fungsi untuk menghitung luas segitiga saat button di klik
+        let alas = Number(document.getElementById('alas').value); //mengambil ukuran alas dari input id "alas" lalu mengubahnya ke number
+        let tinggi = Number(document.getElementById('tinggi').value); //mengambil ukuran tinggi dari input id "tinggi" lalu mengubahnya ke number
+        let luas = 0.5 * alas * tinggi; //rumus menghitung luas segitiga (L = 1/2 x alas x tinggi)
+        document.getElementById('hasilLuasSegitiga').innerText = luas + ' cm²'; //menuliskan hasil kedalam span dengan id hasilLuasSegitiga
+    }
+    
+</script>
+
+</html>
