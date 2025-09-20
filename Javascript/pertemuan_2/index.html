@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pegawai</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark">
+    <h1 class="text-white text-center mt-5 mb-3">Data Gaji Pegawai</h1>
+    <div class="bg-light px-4 py-2 rounded mx-auto" style="width: 80%;">
+         <table class="table table-light table-hover" >
+  <thead>
+    <tr>
+      <th >#</th>
+      <th>Nama</th>
+      <th>Umur</th>
+      <th>Jabatan</th>
+      <th>Status</th>
+      <th>Gaji Pokok</th>
+      <th>Tunjangan Jabatan</th>
+      <th>BPJS</th>
+      <th>Tunjangan Keluarga</th>
+    </tr>
+  </thead>
+  <tbody id="dataGajiPegawai">
+    <!-- lewat javascript -->
+  </tbody>
+  <tfoot>
+    <tr class="table-secondary">
+        <td colspan="9" class="text-center fw-bold" id="gajiTotal"></td>
+    </tr>
+  </tfoot>
+</table>
+    </div>
+   
+
+<!-- Javascript -->
+ <script>
+    // deklarasi data pegawai
+    let pegawai = "Dodi Prayodi"; //Nama pegawai
+    let umur = 25; //Umur pegawai
+    let jabatan = "Manager"; //Jabatan pegawai manager, asisten manager, staff
+    let status = "Menikah"; //Status pegawai menikah atau belum
+
+    // cek gaji pokok berdasarkan jabatan
+    // jika salah satu kondisi true Manager/Asisten Manager/staff maka gaji pokok akan diisi sesuai dengan jabatan
+    // jika false semua maka gaji pokok menjadi 0
+    let gajiPokok = 0;
+    if (jabatan.toLocaleLowerCase() === "manager"){
+        gajiPokok = 15000000;
+    } else if (jabatan.toLocaleLowerCase() === "asisten manager"){
+        gajiPokok = 10000000;
+    }else if (jabatan.toLocaleLowerCase() === "staff"){
+        gajiPokok = 5000000;
+    } else {
+        gajiPokok = 0;
+    };
+
+    // menghitung tunjangan jabatan 15% dari gaji pokok
+    let tunjanganJabatan = gajiPokok * 0.15;
+    // menghitung BPJS 10% dari gaji pokok
+    let bpjs = gajiPokok * 0.10;
+    // menghitung tunjangan keluarga 20% dari gaji pokok jika status menikah
+    let tunjanganKeluarga = 0;
+    if (status.toLocaleLowerCase() === "menikah"){
+        tunjanganKeluarga = gajiPokok * 0.20;
+    } else {
+        tunjanganKeluarga = 0;
+    };
+
+    // menghitung gaji total
+    let gajiTotal = gajiPokok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+    
+    // menampilkan data ke dalam tabel
+    document.getElementById("gajiTotal").innerText = "Gaji Total : Rp. " + gajiTotal.toLocaleString('id'); //toLocaleString('id') untuk membuat angka menjadi format indonesia
+    document.getElementById("dataGajiPegawai").innerHTML = `
+        <tr>
+            <td>1</td>
+            <td>${pegawai}</td>
+            <td>${umur}</td>
+            <td>${jabatan}</td>
+            <td>${status}</td>
+            <td>Rp. ${gajiPokok.toLocaleString('id')}</td>
+            <td>Rp. ${tunjanganJabatan.toLocaleString('id')}</td>
+            <td>Rp. ${bpjs.toLocaleString('id')}</td>
+            <td>Rp. ${tunjanganKeluarga.toLocaleString('id')}</td>
+        </tr>
+    `;
+ </script>
+</body>
+</html>
