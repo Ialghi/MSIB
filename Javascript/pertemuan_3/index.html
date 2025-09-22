@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Pesanan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-dark shadow-sm sticky-top bg-primary">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1 mx-5"><i class="bi bi-bag-fill"></i>&nbsp;Manajemen Pesanan</span>
+      </div>
+    </nav>
+
+    <div class="container mt-4 mb-3">
+        <div class="row">  
+            <div class="col-lg-7 mb-3">
+                <div class="card shadow">
+                    <div class="px-4 my-4">
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <p class="m-0"><b><i class="bi bi-box-fill text-primary"></i>&nbsp;Daftar Produk</b></p>
+                            <div class="w-50">
+                                <input type="text" id="search" class="form-control" placeholder="Cari Produk..." onkeyup="tampilkanProduk()">
+                            </div>
+                        </div>
+                        <div id="listProduk">
+                            <!-- produk ditampilkan menggunakan JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 mb-3">
+                <div class="px-4 py-4 card mb-4 shadow">
+                    <p><b><i class="bi bi-plus-circle-fill text-success"></i>&nbsp;Tambah Produk</b></p>
+                    <form>
+                        <label for="namaProduk" class="mb-2">Nama Produk</label>
+                        <input type="text" class="form-control mb-3" id="namaProduk" placeholder="Masukan Nama Produk" required>
+                        <label for="stokProduk" class="mb-2">Stok Produk</label>
+                        <input type="number" class="form-control mb-3" id="stokProduk" placeholder="Masukan Jumlah Produk" required>
+                        <label for="hargaProduk" class="mb-2">Harga Produk</label>
+                        <input type="number" class="form-control mb-3" id="hargaProduk" placeholder="Masukan Harga Produk" required>
+                        <button class="btn btn-success w-100" onclick="tambahProduk()" type="reset"><i class="bi bi-plus"></i>&nbsp;Tambahkan Produk</button>
+                    </form>
+                </div>
+                <div class="px-4 py-4 card mb-4 shadow">
+                    <p><b><i class="bi bi-cart-fill text-warning"></i>&nbsp;Keranjang Belanja</b></p>
+                        <ul class="list-group list-group-flush" id="keranjangList">
+                            <!-- saat produk ditambahkan ke keranjang -->
+                        </ul>
+                    <p class="text-end mx-3 mt-3">Total Item: <span id="totalItem">Rp 0</span></p>
+                    <button class="btn btn-primary" onclick="prosesPembayaran()">Proses Pembayaran</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-primary text-white text-center p-3">
+      <p>Dibuat oleh <b>Ihsan Ahmad Al-Ghifari</b> | STT Terpadu Nurul Fikri</p>
+      <a href="https://www.linkedin.com/in/ihsan-ahmad-al-ghifari-300736293/" class="text-white ms-2" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://www.instagram.com/dltks_dkfrl?igsh=aGUyM2lxbnZyMm91" class="text-white ms-2" target="_blank"><i class="bi bi-instagram"></i></a>
+      <a href="https://github.com/Ialghi" class="text-white ms-2" target="_blank"><i class="bi bi-github"></i></a>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
